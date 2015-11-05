@@ -31,8 +31,6 @@
 #include "main.h"
 #include <stdint.h>
 
-typedef enum { false, true } bool;
-
 /** @addtogroup STM32F3_Discovery_Peripheral_Examples
   * @{
   */
@@ -42,14 +40,17 @@ typedef enum { false, true } bool;
   */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef enum { false, true } bool;
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;
 static __IO uint32_t TimingDelay;
 
+
 /* Private function prototypes -----------------------------------------------*/
 void Delay(__IO uint32_t nTime);
+int sigConverter(int start, int end);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -71,6 +72,27 @@ int main(void)
 	 {
 	 case 0: //0x000 countdown
 		{
+			int gameID;				//Current Game Id
+			int time;				//time to game start, values above 30 may be unstable
+			int team1PlayerCount;	//Number of players on team 1
+			int team2PlayerCount;	//Number of players on team 2
+			int team3PlayerCount;	//Number of players on team 3
+			int checksum;			//Checksum signature
+
+			gameID=sigConverter(9,16);	//create integer with bits 9-16
+			time=sigConverter(17,24);	//create integer with bits 17-24
+			team1PlayerCount=sigConverter(25,32); //create integer with bits 25-32
+			team2PlayerCount=sigConverter(33,40); //create integer with bits 33-40
+			team3PlayerCount=sigConverter(41,48); //create integer with bits 41-48
+			checksum=sigConverter(49,57);	//create interger with bits 49-57
+
+			printf("Countdown packet");	//print name of
+			printf("Game Id is %i",gameID);		//print the game id
+			printf("Time until start is %i",time);	//print the time remaining
+			printf("Players on team 1: %i",team1PlayerCount); //Print number of players on team 1
+			printf("Players on team 2: %i",team2PlayerCount); //print number of players on team 2
+			printf("Players on team 3: %i",team3PlayerCount); //print number of players on team 3
+
 			break;
 		}
 	 case 1: //0x001 Assign Player
@@ -231,7 +253,10 @@ void assert_failed(uint8_t* file, uint32_t line)
 /**
   * @}
   */
+int sigConverter(int start, int end){
 
+	return 0;
+}
 /**
   * @}
   */

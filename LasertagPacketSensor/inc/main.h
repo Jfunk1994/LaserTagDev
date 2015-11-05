@@ -39,6 +39,7 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 void TimingDelay_Decrement(void);
+int sigConverter(int start, int end);
 
 #endif /* __MAIN_H */
 
