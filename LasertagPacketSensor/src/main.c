@@ -192,7 +192,7 @@ int main(void)
 			P6Rank=sigConverter(65,72);
 			P7Rank=sigConverter(73,80);
 			P8Rank=sigConverter(81,88);
-			checksum=sigConverter(89,96);
+			checksum=sigConverter(89,97);
 
 			break;
 		}
@@ -238,6 +238,22 @@ int main(void)
 		}
 	 case 72: //0x048 Single Tag Report //Kuzco
 		{
+			int gameID=0;
+			int teamNumberA=0;
+			int playerNumberA=0;
+			int teamNumberB=0;
+			int playerNumberB=0;
+			int numTagsRcvd=0;
+			int checkSum=0;
+			gameID=sigConverter(9,16);
+			bool replayA=packet[17];
+			teamNumberA=sigConverter(18,20)+1;
+			playerNumberA=sigConverter(21,24);
+			bool replayB=packet[25];
+			teamNumberB=sigConverter(26,28)+1;
+			playerNumberB=sigConverter(29,32);
+			checksum=sigConverter(33,41);
+
 			break;
 		}
 	 case 128: //0x080 Text Message
