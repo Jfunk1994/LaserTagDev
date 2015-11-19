@@ -167,27 +167,76 @@ int main(void)
 		{
 			break;
 		}
-	 case 50: //0x032 Rank Report
+	 case 50: //0x032 Rank Report //Kuzco
 		{
+			int gameID=0;
+			int teamNumber=0;
+			int teamRank=0;
+			int P1Rank=0;
+			int P2Rank=0;
+			int P3Rank=0;
+			int P4Rank=0;
+			int P5Rank=0;
+			int P6Rank=0;
+			int P7Rank=0;
+			int P8Rank=0;
+			int checksum=0;
+			gameID=sigConverter(9,16);
+			teamNumber=sigConverter(17,20);
+			teamRank=sigConverter(21,24);
+			P1Rank=sigConverter(25,32,);
+			P2Rank=sigConverter(33,40);
+			P3Rank=sigConverter(41,48);
+			P4Rank=sigConverter(49,56);
+			P5Rank=sigConverter(57,64);
+			P6Rank=sigConverter(65,72);
+			P7Rank=sigConverter(73,80);
+			P8Rank=sigConverter(81,88);
+			checksum=sigConverter(89,96);
+
 			break;
 		}
 	 case 64: //0x040 Tag Summary
 		{
+			int gameID=0;
+			int teamNumber=0;
+			int playerNumber=0;
+			int totalTagsRcvd=0;
+			int timeSurvivedMinutes=0;
+			int timeSurvivedSeconds=0;
+			int zoneTimeMinutes=0;
+			int zoneTimeSeconds=0;
+			int checksum=0;
+			gameID=sigConverter(9,16);
+			teamNumber=sigConverter(17,20);
+			playerNumber=sigConverter(21,24);
+			totalTagsRcvd=sigConverter(25,32);
+			timeSurvivedMinutes=sigConverter(33,40);
+			timeSurvivedSeconds=sigConverter(41,48);
+			zoneTimeMinutes=sigConverter(49,56);
+			zoneTimeSeconds=sigConverter(57,64);
+			//Flags
+			//first four are reserved, disregard 65-68
+			bool willSendTeam3Report=packet[69];
+			bool willSendTeam2Report=packet[70];
+			bool willSendTeam1Report=packet[71];
+			//72 is also reserved
+			checksum=sigConverter(73,81);
 			break;
 		}
-	 case 65: //0x041 Team 1 Tag Report
+	 case 65: //0x041 Team 1 Tag Report //Kuzco
 		{
 			break;
 		}
-	 case 66: //0x042 Team 2 Tag Report
+	 case 66: //0x042 Team 2 Tag Report //Kuzco
 		{
 			break;
 		}
-	 case 67: //0x043 Team 3 Tag Report
+	 case 67: //0x043 Team 3 Tag Report //Kuzco
 		{
 			break;
 		}
-	 case 72: //0x048 Single Tag Report
+	 case 72: //0x048 Single Tag Report //Kuzco
 		{
 			break;
 		}
