@@ -249,10 +249,10 @@ int main(void)
 			int numTagsRcvd=0;
 			int checkSum=0;
 			gameID=sigConverter(9,16);
-			bool replayA=packet[17];
+			bool replyA=packet[17];
 			teamNumberA=sigConverter(18,20)+1;
 			playerNumberA=sigConverter(21,24);
-			bool replayB=packet[25];
+			bool replyB=packet[25];
 			teamNumberB=sigConverter(26,28)+1;
 			playerNumberB=sigConverter(29,32);
 			checksum=sigConverter(33,41);
@@ -363,38 +363,38 @@ void readTeamTagReport(int teamReportNumber){
 	player1Included=packet[32];
 	int index=33;
 	if(player1Included){
-		NumTagsRcvdFrom1=sigConverter(index,index+8); //should be 8 or 7?
+		NumTagsRcvdFrom1=sigConverter(index,index+7); //should be 7 I think
 		index+=8;
 	}
 	if(player2Included){
-		NumTagsRcvdFrom2=sigConverter(index,index+8);
+		NumTagsRcvdFrom2=sigConverter(index,index+7);
 		index+=8;
 	}
 	if(player3Included){
-		NumTagsRcvdFrom3=sigConverter(index,index+8);
+		NumTagsRcvdFrom3=sigConverter(index,index+7);
 		index+=8;
 	}
 	if(player4Included){
-		NumTagsRcvdFrom4=sigConverter(index,index+8);
+		NumTagsRcvdFrom4=sigConverter(index,index+7);
 		index+=8;
 	}
 	if(player5Included){
-		NumTagsRcvdFrom5=sigConverter(index,index+8);
+		NumTagsRcvdFrom5=sigConverter(index,index+7);
 		index+=8;
 	}
 	if(player6Included){
-		NumTagsRcvdFrom6=sigConverter(index,index+8);
+		NumTagsRcvdFrom6=sigConverter(index,index+7);
 		index+=8;
 	}
 	if(player7Included){
-		NumTagsRcvdFrom7=sigConverter(index,index+8);
+		NumTagsRcvdFrom7=sigConverter(index,index+7);
 		index+=8;
 	}
 	if(player8Included){
-		NumTagsRcvdFrom8=sigConverter(index,index+8);
+		NumTagsRcvdFrom8=sigConverter(index,index+7);
 		index+=8;
 	}
-	checksum=sigConverter(index,index+9);
+	checksum=sigConverter(index,index+8);
 }
 
 
