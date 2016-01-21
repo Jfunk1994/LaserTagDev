@@ -226,6 +226,71 @@ int main(void)
 		}
 	 case 65: //0x041 Team 1 Tag Report //Kuzco
 		{
+			int gameID=0;
+			int teamNumber=0;
+			int playerNumber=0;
+			bool player8Included=0;
+			bool player7Included=0;
+			bool player6Included=0;
+			bool player5Included=0;
+			bool player4Included=0;
+			bool player3Included=0;
+			bool player2Included=0;
+			bool player1Included=0;
+			int NumTagsRcvdFrom1=0;
+			int NumTagsRcvdFrom2=0;
+			int NumTagsRcvdFrom3=0;
+			int NumTagsRcvdFrom4=0;
+			int NumTagsRcvdFrom5=0;
+			int NumTagsRcvdFrom6=0;
+			int NumTagsRcvdFrom7=0;
+			int NumTagsRcvdFrom8=0;
+			int checksum=0;
+
+			gameID=sigConverter(9,16);
+			player8Included=packet[17];
+			player7Included=packet[18];
+			player6Included=packet[19];
+			player5Included=packet[20];
+			player4Included=packet[21];
+			player3Included=packet[22];
+			player2Included=packet[23];
+			player1Included=packet[24];
+			int index=25;
+			if(player1Included){
+				NumTagsRcvdFrom1=sigConverter(index,index+8);
+				index+=8;
+			}
+			if(player2Included){
+				NumTagsRcvdFrom2=sigConverter(index,index+8);
+				index+=8;
+			}
+			if(player3Included){
+				NumTagsRcvdFrom3=sigConverter(index,index+8);
+				index+=8;
+			}
+			if(player4Included){
+				NumTagsRcvdFrom4=sigConverter(index,index+8);
+				index+=8;
+			}
+			if(player5Included){
+				NumTagsRcvdFrom5=sigConverter(index,index+8);
+				index+=8;
+			}
+			if(player6Included){
+				NumTagsRcvdFrom6=sigConverter(index,index+8);
+				index+=8;
+			}
+			if(player7Included){
+				NumTagsRcvdFrom7=sigConverter(index,index+8);
+				index+=8;
+			}
+			if(player8Included){
+				NumTagsRcvdFrom8=sigConverter(index,index+8);
+				index+=8;
+			}
+			checksum=sigConverter(index,index+9);
+
 			break;
 		}
 	 case 66: //0x042 Team 2 Tag Report //Kuzco
