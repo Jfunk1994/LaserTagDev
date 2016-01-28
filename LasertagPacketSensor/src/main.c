@@ -404,10 +404,12 @@ void readTeamTagReport(int teamReportNumber){
 
 /*
  * ** bounds are inclusive
+ * subject to change based on order of MSB or LSB stored, read
  */
 int sigConverter(int start, int end){
 	int returnValue=0;
 	for(int i=start; i<=end; i++){
+		//enum makes implicit conversion of true/false to 1/0
 		returnValue ^= (-packet[i] ^ returnValue) & (1 << i-start); //found on http://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit-in-c-c
 	}
 	return returnValue;
