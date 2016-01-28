@@ -51,6 +51,11 @@ static __IO uint32_t TimingDelay;
 /* Private function prototypes -----------------------------------------------*/
 void Delay(__IO uint32_t nTime);
 int sigConverter(int start, int end);
+/*
+ * The least significant bit of each packet is sent first
+ * Thus, the first bit of each packet is the least significant of the corresponding integer
+ *
+ */
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -65,7 +70,7 @@ int main(void)
 	//Begin defining packet types
 
 	 bool packet[100];
-	 int ptype=0;
+	 int ptype=sigConverter(0,8);
 
 //not finished implementing switch structure, currently only a shell
 	 switch(ptype)
@@ -397,6 +402,15 @@ void readTeamTagReport(int teamReportNumber){
 	checksum=sigConverter(index,index+8);
 }
 
+/*
+ * ** bounds are inclusive
+ */
+int sigConverter(int start, int end){
+	int returnValue=0;
+	for(int i=start; i<=end; i++){
+		returnValue ^= (-packet[i] ^ returnValue) & (1 << i-start); //found on http://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit-in-c-c
+	}
+	return returnValue;
 
 }
 
