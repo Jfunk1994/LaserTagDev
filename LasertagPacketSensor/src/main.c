@@ -46,12 +46,12 @@ typedef enum { false, true } bool;
 /* Private variables ---------------------------------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;
 static __IO uint32_t TimingDelay;
-
+bool packet[100];
 
 /* Private function prototypes -----------------------------------------------*/
 void Delay(__IO uint32_t nTime);
 int sigConverter(int start, int end);
-bool packet[100];
+char ToDecimal(char);
 /*
  * The least significant bit of each packet is sent first
  * Thus, the first bit of each packet is the least significant of the corresponding integer
@@ -93,7 +93,7 @@ int main(void)
 
 			printf("Countdown packet");	//print name of
 			printf("Game Id is %i",gameID);		//print the game id
-			printf("Time until start is %i",time);	//print the time remaining
+			printf("Time until start is %i",(int)ToDecimal((char)time));	//print the time remaining
 			printf("Players on team 1: %i",team1PlayerCount); //Print number of players on team 1
 			printf("Players on team 2: %i",team2PlayerCount); //print number of players on team 2
 			printf("Players on team 3: %i",team3PlayerCount); //print number of players on team 3
@@ -445,6 +445,19 @@ void readTeamTagReport(int teamReportNumber){
  * ** bounds are inclusive
  * subject to change based on order of MSB or LSB stored, read
  */
+
+char ToDecimal(char bcd)
+{
+	if (bcd == 0xff) return bcd;
+	return (((bcd >> 4) & 0xf) * 10) + (bcd & 0xf);
+}
+
+char ToBinaryCodedDecimal(char dec)
+{
+	if (dec == 0xff) return dec;
+	return (char)(((dec / 10) << 4) | (dec % 10));
+}
+
 int sigConverter(int start, int end){
 	int returnValue=0;
 	int i=start;
