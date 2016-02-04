@@ -84,7 +84,7 @@ int main(void)
 			team1PlayerCount=sigConverter(25,32); //create integer with bits 25-32
 			team2PlayerCount=sigConverter(33,40); //create integer with bits 33-40
 			team3PlayerCount=sigConverter(41,48); //create integer with bits 41-48
-			checksum=sigConverter(49,57);	//create interger with bits 49-57
+			checksum=sigConverter(49,57);	//create integer with bits 49-57
 
 			printf("Countdown packet");	//print name of
 			printf("Game Id is %i",gameID);		//print the game id
@@ -157,10 +157,47 @@ int main(void)
 		}
 	 case 32: //0x020 Request Assistance
 		{
+			int gameID;				//Current Game Id
+			int requestPlayerNum;	//Player number of receiving player
+			int requestTeamNum;	//Team number of receiving player
+			int checksum;			//Checksum signature
+
+			gameID=sigConverter(9,16);	//create integer with bits 9-16
+			requestPlayerNum=sigConverter(17,20);	//create integer with bits 17-20
+			requestTeamNum=sigConverter(21,24); //create integer with bits 21-24
+			checksum=sigConverter(41,49);	//create integer with bits 25-33
+
+			printf("Request Assistance Packet"); //print packet type
+			printf("gameID is: %i",gameID);	//print gameID
+			printf("Requesting player's player number is: %i",requestPlayerNum);	//print requesting player's player number
+			printf("Requesting player's team number is: %i",requestTeamNum);	//print requesting player's team number
 			break;
 		}
 	 case 33: //0x021 Send assistance
 		{
+			int gameID;				//Current Game Id
+			int receivePlayerNum;				//Player number of receiving player
+			int receiveTeamNum;	//Team number of receiving player
+			int sendPlayerNum;	//Player number of sending player
+			int sendTeamNum;	//Team number of sending player
+			int tagsSent;	//Number of tags sent
+			int checksum;			//Checksum signature
+
+			gameID=sigConverter(9,16);	//create integer with bits 9-16
+			receivePlayerNum=sigConverter(17,20);	//create integer with bits 17-20
+			receiveTeamNum=sigConverter(21,24); //create integer with bits 21-24
+			sendPlayerNum=sigConverter(25,28); //create integer with bits 25-28
+			sendTeamNum=sigConverter(29,32); //create integer with bits 29-32
+			tagsSent=sigConverter(33,40); //create integer with bits 33-40
+			checksum=sigConverter(41,49);	//create integer with bits 41-49
+
+			printf("Send Assistance Packet"); //print packet type
+			printf("gameID is: %i",gameID);	//print gameID
+			printf("Requesting player's player number is: %i",receivePlayerNum);	//print requesting player's player number
+			printf("Requesting player's team number is: %i",receiveTeamNum);	//print requesting player's team number
+			printf("Sending player's team number is: %i",sendPlayerNum);	//print sending player's player number
+			printf("Sending player's team number is: %i",sendTeamNum);	//print sending player's team number
+			printf("# of tags sent: %i", tagsSent); //print number of tags sent
 			break;
 		}
 	 case 49: //0x031 Request Tag Report
@@ -193,6 +230,15 @@ int main(void)
 		}
 	 case 128: //0x080 Text Message
 		{
+			//ASCII codes dec 32( ), 33(!), 45-6(- & .), 48-58(0-9 & :), 63(?), 65-90(A-Z), 95(_), 126(~)
+			//ASCII codes hex
+			int nullTerm;			//Null Terminator (0x00)
+			int checksum;			//Checksum signature
+
+
+
+
+			checksum=sigConverter(41,49);	//create integer with bits 41-49
 			break;
 		}
 	 case 144: //0x090 Special Attack
