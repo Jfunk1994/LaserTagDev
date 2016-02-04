@@ -51,6 +51,7 @@ static __IO uint32_t TimingDelay;
 /* Private function prototypes -----------------------------------------------*/
 void Delay(__IO uint32_t nTime);
 int sigConverter(int start, int end);
+bool packet[100];
 /*
  * The least significant bit of each packet is sent first
  * Thus, the first bit of each packet is the least significant of the corresponding integer
@@ -69,7 +70,6 @@ int main(void)
 
 	//Begin defining packet types
 
-	 bool packet[100];
 	 int ptype=sigConverter(0,8);
 
 //not finished implementing switch structure, currently only a shell
@@ -226,7 +226,7 @@ int main(void)
 			gameID=sigConverter(9,16);
 			teamNumber=sigConverter(17,20);
 			teamRank=sigConverter(21,24);
-			P1Rank=sigConverter(25,32,);
+			P1Rank=sigConverter(25,32);
 			P2Rank=sigConverter(33,40);
 			P3Rank=sigConverter(41,48);
 			P4Rank=sigConverter(49,56);
@@ -297,7 +297,7 @@ int main(void)
 			bool replyB=packet[25];
 			teamNumberB=sigConverter(26,28)+1;
 			playerNumberB=sigConverter(29,32);
-			checksum=sigConverter(33,41);
+			checkSum=sigConverter(33,41);
 
 			break;
 		}
@@ -372,13 +372,6 @@ void assert_failed(uint8_t* file, uint32_t line)
 /**
   * @}
   */
-int sigConverter(int start, int end){
-
-	return 0;
-}
-/**
-  * @}
-  */
 void readTeamTagReport(int teamReportNumber){
 	int gameID=0;
 	int teamNumber=0;
@@ -403,7 +396,7 @@ void readTeamTagReport(int teamReportNumber){
 
 	gameID=sigConverter(9,16);
 	teamNumber=sigConverter(17,20)+1;
-	plaerNumber=(21,24);
+	playerNumber=(21,24);
 	player8Included=packet[25];
 	player7Included=packet[26];
 	player6Included=packet[27];
@@ -454,9 +447,11 @@ void readTeamTagReport(int teamReportNumber){
  */
 int sigConverter(int start, int end){
 	int returnValue=0;
-	for(int i=start; i<=end; i++){
+	int i=start;
+	while( i<=end ){
 		//enum makes implicit conversion of true/false to 1/0
 		returnValue ^= (-packet[i] ^ returnValue) & (1 << i-start); //found on http://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit-in-c-c
+		i++;
 	}
 	return returnValue;
 
