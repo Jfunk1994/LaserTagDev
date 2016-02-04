@@ -51,6 +51,11 @@ static __IO uint32_t TimingDelay;
 /* Private function prototypes -----------------------------------------------*/
 void Delay(__IO uint32_t nTime);
 int sigConverter(int start, int end);
+/*
+ * The least significant bit of each packet is sent first
+ * Thus, the first bit of each packet is the least significant of the corresponding integer
+ *
+ */
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -65,7 +70,7 @@ int main(void)
 	//Begin defining packet types
 
 	 bool packet[100];
-	 int ptype=0;
+	 int ptype=sigConverter(0,8);
 
 //not finished implementing switch structure, currently only a shell
 	 switch(ptype)
@@ -204,28 +209,96 @@ int main(void)
 		{
 			break;
 		}
-	 case 50: //0x032 Rank Report
+	 case 50: //0x032 Rank Report //Kuzco
 		{
+			int gameID=0;
+			int teamNumber=0;
+			int teamRank=0;
+			int P1Rank=0;
+			int P2Rank=0;
+			int P3Rank=0;
+			int P4Rank=0;
+			int P5Rank=0;
+			int P6Rank=0;
+			int P7Rank=0;
+			int P8Rank=0;
+			int checksum=0;
+			gameID=sigConverter(9,16);
+			teamNumber=sigConverter(17,20);
+			teamRank=sigConverter(21,24);
+			P1Rank=sigConverter(25,32,);
+			P2Rank=sigConverter(33,40);
+			P3Rank=sigConverter(41,48);
+			P4Rank=sigConverter(49,56);
+			P5Rank=sigConverter(57,64);
+			P6Rank=sigConverter(65,72);
+			P7Rank=sigConverter(73,80);
+			P8Rank=sigConverter(81,88);
+			checksum=sigConverter(89,97);
+
 			break;
 		}
 	 case 64: //0x040 Tag Summary
 		{
+			int gameID=0;
+			int teamNumber=0;
+			int playerNumber=0;
+			int totalTagsRcvd=0;
+			int timeSurvivedMinutes=0;
+			int timeSurvivedSeconds=0;
+			int zoneTimeMinutes=0;
+			int zoneTimeSeconds=0;
+			int checksum=0;
+			gameID=sigConverter(9,16);
+			teamNumber=sigConverter(17,20);
+			playerNumber=sigConverter(21,24);
+			totalTagsRcvd=sigConverter(25,32);
+			timeSurvivedMinutes=sigConverter(33,40);
+			timeSurvivedSeconds=sigConverter(41,48);
+			zoneTimeMinutes=sigConverter(49,56);
+			zoneTimeSeconds=sigConverter(57,64);
+			//Flags
+			//first four are reserved, disregard 65-68
+			bool willSendTeam3Report=packet[69];
+			bool willSendTeam2Report=packet[70];
+			bool willSendTeam1Report=packet[71];
+			//72 is also reserved
+			checksum=sigConverter(73,81);
 			break;
 		}
-	 case 65: //0x041 Team 1 Tag Report
+	 case 65: //0x041 Team 1 Tag Report //Kuzco
 		{
+			readTeamTagReport(1);
 			break;
 		}
-	 case 66: //0x042 Team 2 Tag Report
+	 case 66: //0x042 Team 2 Tag Report //Kuzco
 		{
+			readTeamTagReport(2);
 			break;
 		}
-	 case 67: //0x043 Team 3 Tag Report
+	 case 67: //0x043 Team 3 Tag Report //Kuzco
 		{
+			readTeamTagReport(3);
 			break;
 		}
-	 case 72: //0x048 Single Tag Report
+	 case 72: //0x048 Single Tag Report //Kuzco
 		{
+			int gameID=0;
+			int teamNumberA=0;
+			int playerNumberA=0;
+			int teamNumberB=0;
+			int playerNumberB=0;
+			int numTagsRcvd=0;
+			int checkSum=0;
+			gameID=sigConverter(9,16);
+			bool replyA=packet[17];
+			teamNumberA=sigConverter(18,20)+1;
+			playerNumberA=sigConverter(21,24);
+			bool replyB=packet[25];
+			teamNumberB=sigConverter(26,28)+1;
+			playerNumberB=sigConverter(29,32);
+			checksum=sigConverter(33,41);
+
 			break;
 		}
 	 case 128: //0x080 Text Message
@@ -306,5 +379,87 @@ int sigConverter(int start, int end){
 /**
   * @}
   */
+void readTeamTagReport(int teamReportNumber){
+	int gameID=0;
+	int teamNumber=0;
+	int playerNumber=0;
+	bool player8Included=0;
+	bool player7Included=0;
+	bool player6Included=0;
+	bool player5Included=0;
+	bool player4Included=0;
+	bool player3Included=0;
+	bool player2Included=0;
+	bool player1Included=0;
+	int NumTagsRcvdFrom1=0;
+	int NumTagsRcvdFrom2=0;
+	int NumTagsRcvdFrom3=0;
+	int NumTagsRcvdFrom4=0;
+	int NumTagsRcvdFrom5=0;
+	int NumTagsRcvdFrom6=0;
+	int NumTagsRcvdFrom7=0;
+	int NumTagsRcvdFrom8=0;
+	int checksum=0;
+
+	gameID=sigConverter(9,16);
+	teamNumber=sigConverter(17,20)+1;
+	plaerNumber=(21,24);
+	player8Included=packet[25];
+	player7Included=packet[26];
+	player6Included=packet[27];
+	player5Included=packet[28];
+	player4Included=packet[29];
+	player3Included=packet[30];
+	player2Included=packet[31];
+	player1Included=packet[32];
+	int index=33;
+	if(player1Included){
+		NumTagsRcvdFrom1=sigConverter(index,index+7); //should be 7 I think
+		index+=8;
+	}
+	if(player2Included){
+		NumTagsRcvdFrom2=sigConverter(index,index+7);
+		index+=8;
+	}
+	if(player3Included){
+		NumTagsRcvdFrom3=sigConverter(index,index+7);
+		index+=8;
+	}
+	if(player4Included){
+		NumTagsRcvdFrom4=sigConverter(index,index+7);
+		index+=8;
+	}
+	if(player5Included){
+		NumTagsRcvdFrom5=sigConverter(index,index+7);
+		index+=8;
+	}
+	if(player6Included){
+		NumTagsRcvdFrom6=sigConverter(index,index+7);
+		index+=8;
+	}
+	if(player7Included){
+		NumTagsRcvdFrom7=sigConverter(index,index+7);
+		index+=8;
+	}
+	if(player8Included){
+		NumTagsRcvdFrom8=sigConverter(index,index+7);
+		index+=8;
+	}
+	checksum=sigConverter(index,index+8);
+}
+
+/*
+ * ** bounds are inclusive
+ * subject to change based on order of MSB or LSB stored, read
+ */
+int sigConverter(int start, int end){
+	int returnValue=0;
+	for(int i=start; i<=end; i++){
+		//enum makes implicit conversion of true/false to 1/0
+		returnValue ^= (-packet[i] ^ returnValue) & (1 << i-start); //found on http://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit-in-c-c
+	}
+	return returnValue;
+
+}
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
