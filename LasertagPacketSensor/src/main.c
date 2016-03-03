@@ -235,6 +235,18 @@ int main(void)
 			P7Rank=sigConverter(73,80);
 			P8Rank=sigConverter(81,88);
 			checksum=sigConverter(89,97);
+			printf("game ID: %i", gameID);
+			printf("team number: %i", teamNumber);
+			printf("team rank: %i", teamRank);
+			printf("player 1 rank: %i", P1Rank);
+			printf("player 2 rank: %i", P2Rank);
+			printf("player 3 rank: %i", P3Rank);
+			printf("player 4 rank: %i", P4Rank);
+			printf("player 5 rank: %i", P5Rank);
+			printf("player 6 rank: %i", P6Rank);
+			printf("player 7 rank: %i", P7Rank);
+			printf("player 8 rank: %i", P8Rank);
+			printf("Checksum: %i", checksum);
 
 			break;
 		}
@@ -264,6 +276,15 @@ int main(void)
 			bool willSendTeam1Report=packet[71];
 			//72 is also reserved
 			checksum=sigConverter(73,81);
+			printf("Game ID: %i", gameID);
+			printf("Team Number: %i", teamNumber);
+			printf("Player Number: %i", playerNumber);
+			printf("Total Tags received: %i", totalTagsRcvd);
+			printf("Time survived minutes: %i", timeSurvivedMinutes);
+			printf("Time survived seconds: %i", timeSurvivedSeconds);
+			printf("Zone Time Minutes: %i", zoneTimeMinutes);
+			printf("Zone Time Seconds: %i", zoneTimeSeconds);
+			printf("Checksum: %i", checksum);
 			break;
 		}
 	 case 65: //0x041 Team 1 Tag Report //Kuzco
@@ -289,7 +310,7 @@ int main(void)
 			int teamNumberB=0;
 			int playerNumberB=0;
 			int numTagsRcvd=0;
-			int checkSum=0;
+			int checksum=0;
 			gameID=sigConverter(9,16);
 			bool replyA=packet[17];
 			teamNumberA=sigConverter(18,20)+1;
@@ -297,7 +318,14 @@ int main(void)
 			bool replyB=packet[25];
 			teamNumberB=sigConverter(26,28)+1;
 			playerNumberB=sigConverter(29,32);
-			checkSum=sigConverter(33,41);
+			checksum=sigConverter(33,41);
+			printf("Game ID : %i", gameID);
+			printf("Team Number A : %i",teamNumberA);
+			printf("Player Number A : %i",playerNumberA);
+			printf("Team Number B : %i",teamNumberB);
+			printf("Player Number B : %i",playerNumberB);
+			printf("Number of Tags Received : %i",numTagsRcvd);
+			printf("Checksum : %i",checksum);
 
 			break;
 		}
@@ -439,6 +467,17 @@ void readTeamTagReport(int teamReportNumber){
 		index+=8;
 	}
 	checksum=sigConverter(index,index+8);
+	printf("Team number : %i",teamNumber);
+	printf("Player Number : %i",playerNumber);
+	printf("NumTagsRcvdFrom1 : %i",NumTagsRcvdFrom1);
+	printf("NumTagsRcvdFrom2 : %i",NumTagsRcvdFrom2);
+	printf("NumTagsRcvdFrom3 : %i",NumTagsRcvdFrom3);
+	printf("NumTagsRcvdFrom4 : %i",NumTagsRcvdFrom4);
+	printf("NumTagsRcvdFrom5 : %i",NumTagsRcvdFrom5);
+	printf("NumTagsRcvdFrom6 : %i",NumTagsRcvdFrom6);
+	printf("NumTagsRcvdFrom7 : %i",NumTagsRcvdFrom7);
+	printf("NumTagsRcvdFrom8 : %i",NumTagsRcvdFrom8);
+	printf("Checksum : %i",checksum);
 }
 
 /*
