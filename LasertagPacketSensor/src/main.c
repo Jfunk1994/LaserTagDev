@@ -106,46 +106,928 @@ int main(void)
 		}
 	 case 2: //0x002 Announce Custom Lazer Tag Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 3: //0x003 Announce Custom Laser Tag (2 Teams) Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 4: //0x004 Announce Custom Lazer Tag (3 Teams) Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 5: //0x005 Announce Hide And seek Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 6: //0x006 Announce Hunt the Prey Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 7: //0x007 Announce Kings (2 Teams) Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 8: //0x008 Announce Kings (3 Teams) Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 9: //0x009 Announce Own the Zone Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 10: //0x00A Announce Own the Zone (2 Teams) Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 11: //0x00B Announce Own the Zone (3 Teams) Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			checksum=sigConverter(73,81);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+
 			break;
 		}
 	 case 12: //0x00C Announce Special Game
 		{
+			int gameID;		// Current game ID
+			int gameLength;	// Game length in minutes
+			int tags;		// Amount of tags allocated to taggers
+			int reloads;	// Amount of reloads
+			int shields;	// Amount of shields allocated to taggers
+			int megas;		// Amount of mega-tags allocated to taggers
+			int flags1;		// Flags1
+			int flags2;		// Flags2
+			int numTeams;	// Number of teams
+			int gameName;   // Name of the game
+			int checksum; 	// Checksum
+
+			gameID=sigConverter(9,16);
+			gameLength=sigConverter(17,24);
+			tags=sigConverter(25,32);
+			reloads=sigConverter(33,40);
+			shields=sigConverter(41,48);
+			megas=sigConverter(49,56);
+
+			flags1=sigConverter(57,64);
+				int neut10 = subInt(flags1, 1);
+				int limReloads = subInt(flags1, 2);
+				int limMegs = subInt(flags1, 3);
+				int teamTags = subInt(flags1, 4);
+				int medicMode = subInt(flags1, 5);
+				int slowTags = subInt(flags1, 6);
+				int huntPrey = subInt(flags1, 7);
+				int huntDir = subInt(flags1, 8);
+			flags2=sigConverter(65,70);
+				int contZones = subInt(flags2, 1);
+				int teamAssociated = subInt(flags2, 2);
+				int neut15 = subInt(flags2, 3);
+				int supplyUnNeut = subInt(flags2, 4);
+				int supplyRefill = subInt(flags2, 5);
+				int hostile = subInt(flags2, 6);
+			numTeams = sigConverter(71, 72);
+			gameName = sigConverter(73, 104);
+			checksum=sigConverter(105,113);
+
+			printf("Announce Custom Game Packet");
+			printf("Game ID is %i", gameID);
+			printf("Game Length = %i", gameLength);
+			printf("#Tags =  %i", tags);
+			printf("#Reloads = %i", reloads);
+			printf("#Shields = %i", shields);
+			printf("#Megas = %i", megas);
+
+
+			// Flags
+			if (neut10)
+				printf("10 Tag Neutralization");
+			if (limReloads)
+				printf("Limited Reloads");
+			if (limMegs)
+				printf("Limited Mega Tags");
+			if (teamTags)
+				printf("Team Tags");
+			if (medicMode)
+				printf("Medic Mode");
+			if (slowTags)
+				printf("Max of 1 tag / second");
+			if (huntPrey)
+				printf("Hunt the Prey Activated");
+			if (huntDir)
+					printf("Team 2 hunts first");
+				else
+					printf("Team 1 hunts first");
+			if (contZones)
+				printf("Contested Zones Activated");
+			if (teamAssociated)
+				printf("Zones are associated with teams");
+			if (neut15)
+				printf("15 Second Neutralization when tagged");
+			if (supplyUnNeut)
+				printf("Supply Zones Un-neutralize players");
+			if (supplyRefill)
+				printf("Supply Zones Refill Tags");
+			if (hostile)
+				printf("Hostile Zones Activated");
+
+			printf("The number of teams is %i", numTeams);
+			printf("The game name is %i", gameName);
 			break;
 		}
 	 case 15: //0x00F Assign Player Fail
@@ -154,6 +1036,20 @@ int main(void)
 		}
 	 case 16: //0x010 Request Join Game
 		{
+			int gameID;
+			int taggerID;
+			int teamPreferred;
+			int checkSum;
+
+			gameID=sigConverter(9,16);	// game ID
+			taggerID = sigConverter(17, 24); // tagger ID
+			teamPreferred = sigConverter(31, 32); // Preferred team (0 if no preference)
+			checkSum = sigConverter(33, 41); // checksum
+
+			printf("gameID is: %i",gameID);	//print gameID
+			printf("Tagger ID is: %i", taggerID); // print tagger ID
+			printf("Preferred team is %i", teamPreferred); // print preferred team
+
 			break;
 		}
 	 case 17: //0x011 Acknowledge Player Assignment
@@ -207,6 +1103,35 @@ int main(void)
 		}
 	 case 49: //0x031 Request Tag Report
 		{
+			int gameID;
+			int teamNum;
+			int playerNum;
+			int team3Request;
+			int team2Request;
+			int team1Request;
+			int tagSummaryRequest;
+			int checkSum;
+
+			gameID = sigConverter(9, 16);
+			teamNum = sigConverter(17, 20);
+			playerNum = sigConverter(21, 24);
+			team3Request = sigConverter(29, 29);
+			team2Request = sigConverter(30, 30);
+			team1Request = sigConverter(31, 31);
+			tagSummaryRequest = sigConverter(32, 32);
+			checkSum = sigConverter(33, 41);
+
+			printf("gameID is: %i",gameID);
+			printf("Team Number is: %i",teamNum);
+			printf("Player Number is: %i",playerNum);
+			if (team3Request)
+				printf("Request team 3 tag report");
+			if (team2Request)
+				printf("Request team 2 tag report");
+			if (team1Request)
+				printf("Request team 1 tag report");
+			if (tagSummaryRequest)
+				printf("Request Tag Summary");
 			break;
 		}
 	 case 50: //0x032 Rank Report //Kuzco
