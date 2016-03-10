@@ -102,6 +102,21 @@ int main(void)
 		}
 	 case 1: //0x001 Assign Player
 		{
+			int gameID;		// Current game ID
+			int taggerID;	// Tagger ID
+			int flags;		// Flags
+			int checksum;	// Checksum
+
+			gameID=sigConverter(9,16);
+			taggerID=sigConverter(17,24);
+			flags=sigConverter(25,32);
+				int teamPlrNum=sigConverter(28,32);
+			checksum=sigConverter(33,41);
+
+			printf("Assign Player Packet");
+			printf("Game ID is %i", gameID);
+			printf("Tagger ID is %i", taggerID);
+			printf("Packed Team and Player Number is %i", teamPlrNum);
 			break;
 		}
 	 case 2: //0x002 Announce Custom Lazer Tag Game
@@ -950,6 +965,17 @@ int main(void)
 		}
 	 case 15: //0x00F Assign Player Fail
 		{
+			int gameID; // Game ID
+			int taggerID; // Tagger ID
+			int checksum; // Checksum
+
+			gameID=sigConverter(9,16);
+			taggerID=sigConverter(17,24);
+			checksum=sigConverter(25,33);
+
+			printf("Assign Player Fail Packet");
+			printf("Game ID is %i", gameID);
+			printf("Tagger ID is %i", taggerID);
 			break;
 		}
 	 case 16: //0x010 Request Join Game
@@ -958,6 +984,17 @@ int main(void)
 		}
 	 case 17: //0x011 Acknowledge Player Assignment
 		{
+			int gameID; // Game ID
+			int taggerID; // Tagger ID
+			int checksum; // Checksum
+
+			gameID=sigConverter(9,16);
+			taggerID=sigConverter(17,24);
+			checksum=sigConverter(25,33);
+
+			printf("Acknowledge Player Assignment Packet");
+			printf("Game ID is %i", gameID);
+			printf("Tagger ID is %i", taggerID);
 			break;
 		}
 	 case 32: //0x020 Request Assistance
