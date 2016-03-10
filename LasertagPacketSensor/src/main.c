@@ -112,8 +112,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -124,22 +122,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -196,8 +193,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -208,22 +203,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -280,8 +274,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -292,22 +284,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -364,8 +355,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -376,22 +365,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -448,8 +436,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -460,22 +446,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -532,8 +517,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -544,22 +527,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -616,8 +598,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -628,22 +608,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -700,8 +679,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -712,22 +689,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -784,8 +760,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -796,22 +770,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -868,8 +841,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int checksum; 	// Checksum
 
@@ -880,22 +851,23 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
+
 			numTeams = sigConverter(71, 72);
 			checksum=sigConverter(73,81);
 
@@ -952,8 +924,6 @@ int main(void)
 			int reloads;	// Amount of reloads
 			int shields;	// Amount of shields allocated to taggers
 			int megas;		// Amount of mega-tags allocated to taggers
-			int flags1;		// Flags1
-			int flags2;		// Flags2
 			int numTeams;	// Number of teams
 			int gameName;   // Name of the game
 			int checksum; 	// Checksum
@@ -965,22 +935,21 @@ int main(void)
 			shields=sigConverter(41,48);
 			megas=sigConverter(49,56);
 
-			flags1=sigConverter(57,64);
-				int neut10 = subInt(flags1, 1);
-				int limReloads = subInt(flags1, 2);
-				int limMegs = subInt(flags1, 3);
-				int teamTags = subInt(flags1, 4);
-				int medicMode = subInt(flags1, 5);
-				int slowTags = subInt(flags1, 6);
-				int huntPrey = subInt(flags1, 7);
-				int huntDir = subInt(flags1, 8);
-			flags2=sigConverter(65,70);
-				int contZones = subInt(flags2, 1);
-				int teamAssociated = subInt(flags2, 2);
-				int neut15 = subInt(flags2, 3);
-				int supplyUnNeut = subInt(flags2, 4);
-				int supplyRefill = subInt(flags2, 5);
-				int hostile = subInt(flags2, 6);
+			int neut10 = sigConverter(57, 57);
+			int limReloads = sigConverter(58, 58);
+			int limMegs = sigConverter(59, 59);
+			int teamTags = sigConverter(60, 60);
+			int medicMode = sigConverter(61, 61);
+			int slowTags = sigConverter(62, 62);
+			int huntPrey = sigConverter(63, 63);
+			int huntDir = sigConverter(64, 64);
+
+			int contZones = sigConverter(65, 65);
+			int teamAssociated = sigConverter(66, 66);
+			int neut15 = sigConverter(67, 67);
+			int supplyUnNeut = sigConverter(68, 68);
+			int supplyRefill = sigConverter(69, 69);
+			int hostile = sigConverter(70, 70);
 			numTeams = sigConverter(71, 72);
 			gameName = sigConverter(73, 104);
 			checksum=sigConverter(105,113);
