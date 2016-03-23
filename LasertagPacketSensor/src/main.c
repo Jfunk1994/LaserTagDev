@@ -1261,14 +1261,24 @@ int main(void)
 	 case 128: //0x080 Text Message
 		{
 			//ASCII codes dec 32( ), 33(!), 45-6(- & .), 48-58(0-9 & :), 63(?), 65-90(A-Z), 95(_), 126(~)
-			//ASCII codes hex
-			int nullTerm;			//Null Terminator (0x00)
+			//ASCII codes hex 20	 21		2D-E		 30-3A			 3F		41-5A		5F     7E
 			int checksum;			//Checksum signature
-
-
-
-
-			checksum=sigConverter(41,49);	//create integer with bits 41-49
+			int chars[10]={32,32,32,32,32,32,32,32};
+			int index=9;
+			int charNumber=0;
+			while(sigConverter(index,index+7)!=0){
+				chars[charNumber]=sigConverter(index,index+7);
+				charNumber++;
+				index+=8;
+			}
+			index+=8;
+			checksum=sigConverter(index,index+8);
+			printf("message: ");
+			int i=0;
+			for (;i<charNumber;i++){
+				printf("%c", chars[i]);
+			}
+			printf("checksum: %d", checksum);
 			break;
 		}
 	 case 144: //0x090 Special Attack
