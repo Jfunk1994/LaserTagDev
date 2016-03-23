@@ -64,7 +64,8 @@ char ToDecimal(char);
   */
 int main(void)
 {
-
+	while(1)
+	{
 	//Begin defining packet types
 
 	 int ptype=sigConverter(0,8);
@@ -1274,8 +1275,13 @@ int main(void)
 		{
 			break;
 		}
+	 default:
+	 	 {
+	 		 break;
+	 	 }
 	 }
-	 while(1);
+
+	}
 
 }
 
