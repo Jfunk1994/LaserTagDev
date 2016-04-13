@@ -64,8 +64,11 @@ char ToDecimal(char);
   */
 int main(void)
 {
+	gpioInit();
+	timerInit();
+
 	while(1)
-	{
+	{}
 	//Begin defining packet types
 
 	 int ptype=sigConverter(0,8);
@@ -1291,7 +1294,7 @@ int main(void)
 	 	 }
 	 }
 
-	}
+	//}//end while loop
 
 }
 
@@ -1345,7 +1348,7 @@ void readTeamTagReport(int teamReportNumber){
 
 	gameID=sigConverter(9,16);
 	teamNumber=sigConverter(17,20)+1;
-	playerNumber=(21,24);
+	playerNumber=sigConverter(21,24);
 	player8Included=packet[25];
 	player7Included=packet[26];
 	player6Included=packet[27];

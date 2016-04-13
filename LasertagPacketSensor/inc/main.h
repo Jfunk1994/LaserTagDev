@@ -33,6 +33,8 @@
 #include "stm32f30x.h"
 #include "stm32f3_discovery.h"
 #include "stm32f30x_it.h"
+#include "timers.h"
+#include "gpio.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
